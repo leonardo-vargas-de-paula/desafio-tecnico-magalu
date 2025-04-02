@@ -2,7 +2,7 @@
 Estudo de uma solução para um desafio backend da Magalu.
 # endpoints
 <h2>POST - Agenda Comunicação</h2>
-<li>DataHorEnvio</li>
+<li>DataHoraEnvio</li>
 <li>EmailDestinatario</li>
 <li>TelefoneDestinatario</li>
 <li>Mensagem</li>
