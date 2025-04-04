@@ -3,6 +3,7 @@ package com.vargas.agendamento_api.business.service;
 import com.vargas.agendamento_api.business.mapper.IAgendamentoMapper;
 import com.vargas.agendamento_api.controller.dto.in.AgendamentoDTOIn;
 import com.vargas.agendamento_api.controller.dto.out.AgendamentoDTOOut;
+import com.vargas.agendamento_api.infra.exception.NotFoundException;
 import com.vargas.agendamento_api.infra.repository.AgendamentoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,12 @@ public class AgendamentoService {
     public AgendamentoDTOOut gravarAgendamento(AgendamentoDTOIn agendamento){
         return agMapper.paraOut(
                 repository.save(agMapper.paraEntity(agendamento))
+        );
+    }
+
+    public AgendamentoDTOOut buscarAgendamentoPorId(Long id){
+        return agMapper.paraOut(
+                repository.findById(id).orElseThrow(()-> new NotFoundException("Id não encontrado."))
         );
     }
 
