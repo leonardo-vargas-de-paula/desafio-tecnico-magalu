@@ -27,6 +27,7 @@ public class Agendamento {
     @Enumerated(EnumType.STRING)
     private StatusNotificacaoEnum statusNotificacao;
 
+
     @PrePersist
     public void prePersist(){
         dataHoraAgendamento = LocalDateTime.now();
