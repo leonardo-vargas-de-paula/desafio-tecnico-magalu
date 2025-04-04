@@ -5,6 +5,7 @@ import com.vargas.agendamento_api.infra.entity.Agendamento;
 import org.mapstruct.Mapper;
 import com.vargas.agendamento_api.controller.dto.in.AgendamentoDTOIn;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 
@@ -15,6 +16,10 @@ public interface IAgendamentoMapper {
 
     @Mapping(target = "statusNotificacao", source = "statusNotificacao")
     AgendamentoDTOOut paraOut(Agendamento agendamento);
+
+    @Mapping(target = "dataHoraModificacao", expression = "java(LocalDateTime.now())")
+    @Mapping(target = "statusNotificacao", expression = "java(StatusNotificacaoEnum.CANCELADO)")
+    Agendamento paraEntityCancelamento(Agendamento agendamento);
 
 
 }

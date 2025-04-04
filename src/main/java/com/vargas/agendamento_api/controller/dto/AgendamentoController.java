@@ -4,6 +4,7 @@ import com.vargas.agendamento_api.business.service.AgendamentoService;
 import com.vargas.agendamento_api.controller.dto.in.AgendamentoDTOIn;
 import com.vargas.agendamento_api.controller.dto.out.AgendamentoDTOOut;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,4 +23,11 @@ public class AgendamentoController {
     public ResponseEntity<AgendamentoDTOOut> buscarAgendamentoPorId (@PathVariable("id") Long id){
           return ResponseEntity.ok(agService.buscarAgendamentoPorId(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> cancelarAgendamento(@PathVariable("id") Long id){
+        agService.cancelarAgendamento(id);
+        return ResponseEntity.accepted().build();
+    }
+
 }
